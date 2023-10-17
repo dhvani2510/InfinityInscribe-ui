@@ -1,0 +1,23 @@
+<div class="navbar">
+  <div class="logo">
+        <span>InfinityScrible</span>
+  </div>
+  <div class="buttons">
+    <ng-container *ngIf="!userLoggedIn; else userLinks">
+      <button (click)="navigateToLogin()">
+        <i class="fas fa-sign-in-alt"></i> Login
+      </button>
+      <button (click)="navigateToSignup()">
+        <i class="fas fa-user-plus"></i> Signup
+      </button>
+    </ng-container>
+    <ng-template #userLinks>
+      <button (click)="navigateToProfile()">
+        <i class="fas fa-user"></i> Profile
+      </button>
+      <button (click)="logout()">
+        <i class="fas fa-sign-out-alt"></i> Logout
+      </button>
+    </ng-template>
+  </div>
+</div>
