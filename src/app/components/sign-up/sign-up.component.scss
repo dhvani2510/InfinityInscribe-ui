@@ -1,0 +1,113 @@
+.background1 {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url("https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/7923ce24293983.570a1fd8e5da3.jpg");
+  padding: 40px;
+
+  .text-right {
+    text-align: right;
+    padding: 15px;
+
+    a {
+      text-decoration: none;
+      color: #777;
+
+      .icon {
+        font-size: 24px;
+      }
+    }
+  }
+
+  .custom-row {
+    background-color: transparent;
+    display: flex;
+    flex-direction: row;
+
+    .custom-col {
+      color: #fff;
+      padding: 15px;
+      text-align: center;
+      font-weight: bold;
+      background: none; /* Remove background */
+
+      .heading {
+        font-size: 38px;
+      }
+
+      .signup {
+        font-size: 20px;
+      }
+    }
+
+    .custom-col {
+      flex-grow: 1;
+      // background-color: #fff;
+
+      .custom-container {
+        background-color: #fff;
+        overflow-y: auto;
+        padding: 15px;
+        flex-grow: 1;
+
+        form {
+          padding: 15px;
+
+          .custom-input-group {
+            margin-bottom: 20px;
+            padding: 0 15px;
+
+            input,
+            textarea {
+              width: 100%;
+              padding: 10px;
+              border: 1px solid #ccc;
+              border-radius: 4px;
+
+              &.is-invalid {
+                border-color: #dc3545;
+              }
+            }
+          }
+
+          .custom-btn {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 20px;
+            cursor: pointer;
+          }
+
+          .custom-border-top {
+            border-top: 1px solid #ccc;
+            padding-top: 20px;
+            margin-top: 20px;
+            text-align: center;
+            color: #777;
+
+            a {
+              text-decoration: none;
+              color: #007BFF;
+            }
+          }
+
+          .custom-alert {
+            margin-top: 20px;
+            padding: 10px;
+            text-align: center;
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    .custom-row {
+      flex-direction: column;
+    }
+  }
+}

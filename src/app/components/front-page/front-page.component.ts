@@ -1,8 +1,8 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Router, ActivatedRoute } from '@angular/router';
-import { AppService } from '../app.service';
-import { AuthenticationService } from '../authentication.service';
+import { AppService } from '../../app.service';
+import { AuthenticationService } from '../../authentication.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({

@@ -1,10 +1,11 @@
 .custom-container {
   display: flex;
-  overflow: hidden;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  margin-top: 33px; /* Add top margin to prevent overlapping with the header */
+
 
   .custom-body {
     width: 100%;

@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { FrontPageComponent } from './front-page/front-page.component';
+import { FrontPageComponent } from './components/front-page/front-page.component';
+import { LoginComponent } from './components/login/login.component';
+import { SignUpComponent } from './components/sign-up/sign-up.component';
 // import { LoginComponent } from './login/login.component';
 // import { SignUpComponent } from './sign-up/sign-up.component';
 // import { MyprofileComponent } from './myprofile/myprofile.component';
@@ -15,8 +17,8 @@ import { FrontPageComponent } from './front-page/front-page.component';
 
 const routes: Routes = [
   {path : 'home' , component : FrontPageComponent},
-//  {path : 'login' , component : LoginComponent},
-//  {path : 'signup' , component : SignUpComponent},
+ {path : 'login' , component : LoginComponent},
+ {path : 'signup' , component : SignUpComponent},
 //  {path : 'profile/:id' , component : MyprofileComponent},
 //  {path : 'blog' , component : MainPageComponent},
 //  {path : 'createBlog' , component : NewblogComponent},

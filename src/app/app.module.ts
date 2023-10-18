@@ -5,13 +5,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 // import { SignUpComponent } from './sign-up/sign-up.component';
 // import { LoginComponent } from './login/login.component';
-import { FrontPageComponent } from './front-page/front-page.component';
+import { FrontPageComponent } from './components/front-page/front-page.component';
 import { FooterComponent } from './shared-components/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms'; // Add this import
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { NavbarComponent } from './shared-components/navbar/navbar.component'
+import { LoginComponent } from './components/login/login.component';
+import { SignUpComponent } from './components/sign-up/sign-up.component';
 // import { MainPageComponent } from './main-page/main-page.component';
 // import { MyprofileComponent } from './myprofile/myprofile.component';
 // import { NewblogComponent } from './newblog/newblog.component';
@@ -24,8 +26,8 @@ import { NavbarComponent } from './shared-components/navbar/navbar.component'
 @NgModule({
   declarations: [
     AppComponent,
-    // SignUpComponent,
-    // LoginComponent,
+    SignUpComponent,
+    LoginComponent,
     FrontPageComponent,
     FooterComponent,
     NavbarComponent
@@ -42,9 +44,9 @@ import { NavbarComponent } from './shared-components/navbar/navbar.component'
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule,
     ReactiveFormsModule,
-    CommonModule
+    CommonModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

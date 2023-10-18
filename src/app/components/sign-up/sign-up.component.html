@@ -1,0 +1,105 @@
+<div class="background1">
+  <div class="text-right p-3">
+    <abbr title="Go to Homepage">
+      <a href="/home">
+        <i class="material-icons text-light icon">home</i>
+      </a>
+    </abbr>
+  </div>
+
+  <div class="custom-row">
+    <div class="custom-col">
+      <div class="text-center text-light heading font-weight-bold">
+        InfinityInscribe
+      </div>
+      <div class="text-center text-light signup">SIGN UP</div>
+    </div>
+    <div class="custom-col pt-5">
+      <div class="custom-container size bg-light custom-scroll">
+        <form (ngSubmit)="onSubmit()">
+          <div class="custom-input-group mb-4 custom-input">
+            <input
+              type="text"
+              [(ngModel)]="name"
+              name="name"
+              class="custom-input-control"
+              placeholder="Name"
+              required
+            />
+          </div>
+
+          <div class="custom-input-group mb-4 mt-4 custom-input">
+            <input
+              type="text"
+              [(ngModel)]="username"
+              name="username"
+              class="custom-input-control"
+              placeholder="Username"
+              required
+            />
+          </div>
+          <div class="custom-input-group mb-4 custom-input">
+            <input
+              type="text"
+              [(ngModel)]="phone"
+              name="phone"
+              class="custom-input-control"
+              placeholder="Phone"
+              required
+            />
+          </div>
+
+          <div class="custom-input-group mb-4 custom-input">
+            <input
+              type="email"
+              [(ngModel)]="email"
+              name="email"
+              class="custom-input-control"
+              placeholder="Email"
+              required
+            />
+          </div>
+
+          <div class="custom-input-group mb-4 custom-input">
+            <input
+              type="password"
+              [(ngModel)]="password"
+              name="password"
+              class="custom-input-control"
+              placeholder="Password"
+              required
+            />
+          </div>
+          <div class="custom-input-group mb-4 mt-4 custom-input">
+            <textarea
+              [(ngModel)]="bio"
+              name="bio"
+              class="custom-input-control"
+              placeholder="Bio"
+              required
+            ></textarea>
+          </div>
+          <div class="custom-input-group custom-btn-group">
+            <button class="custom-btn">Register</button>
+          </div>
+          <div class="custom-border-top pt-3">
+            <div class="text-center text-muted">
+              Don't have an account?
+              <a href="/login">Log In</a>
+            </div>
+          </div>
+        </form>
+
+        <div *ngIf="alert" class="custom-alert">
+          <a href="#" class="custom-close" data-dismiss="alert" aria-label="close">&times;</a>
+          <strong>Sign Up successful!</strong>
+        </div>
+
+        <div *ngIf="emailused" class="custom-alert">
+          <a href="#" class="custom-close" data-dismiss="alert" aria-label="close">&times;</a>
+          <strong>Email or username already in use!</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
