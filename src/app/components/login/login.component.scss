@@ -107,6 +107,9 @@
   width: 100%;
   text-transform: uppercase;
   margin-bottom: 15px; /* Add margin to create space between buttons */
+  &:disabled  {
+    opacity: 15%;
+  }
 }
 
 /* Apply custom styles to the email input placeholder with FontAwesome icon */
