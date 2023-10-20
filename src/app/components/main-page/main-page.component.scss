@@ -1,0 +1,75 @@
+// Define a base font family
+$base-font-family: inherit;
+
+.main-content  {
+  position: relative;
+  top: 30px;
+  max-height: 100vh;
+  min-height: 70vh;
+}
+
+.heading {
+  font-size: 28px;
+  font-family: $base-font-family;
+}
+
+.category {
+  font-size: 16px;
+  font-family: $base-font-family;
+}
+
+.title {
+  font-size: 25px;
+  font-family: $base-font-family;
+  color: black;
+  text-decoration: none;
+
+  &:hover {
+    color: #45969b;
+  }
+}
+
+.descrip {
+  font-size: 18px;
+  font-family: $base-font-family;
+}
+
+.title1 {
+  font-size: 20px;
+  font-family: $base-font-family;
+  color: black;
+  text-decoration: none;
+
+  &:hover {
+    color: #45969b;
+  }
+}
+
+.descrip1 {
+  font-size: 15px;
+  font-family: $base-font-family;
+}
+
+.sizeimg {
+  height: 200px;
+  width: 200px;
+}
+
+.categories {
+  cursor: pointer;
+  font-size: 18px;
+  color: #45969b;
+
+  &:hover {
+    color: black;
+  }
+}
+
+.head {
+  font-family: $base-font-family;
+  font-size: 28px;
+}
+
+.index {
+  font-size: 15px;
+}

@@ -1,9 +1,7 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
-import { Router, ActivatedRoute } from '@angular/router';
-import { AppService } from '../../app.service';
+import { Router } from '@angular/router';
 import { AuthenticationService } from '../../authentication.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-navbar',
@@ -12,10 +10,22 @@ import { AuthenticationService } from '../../authentication.service';
 })
 export class NavbarComponent implements OnInit {
   userLoggedIn = false; // You can set this based on your authentication logic
+  private subscription: Subscription;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private authService:AuthenticationService) { 
+    this.subscription = this.authService.userLoggedIn$.subscribe((value) => {
+      this.userLoggedIn = value;
+    });
+  }
 
-  ngOnInit() {}
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
+
+  ngOnInit() {  
+    this.userLoggedIn = this.authService.getUserLoggedIn();
+    console.log(this.userLoggedIn);
+  }
 
   navigateToLogin() {
     this.router.navigate(['/login']);
@@ -29,9 +39,19 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(['/profile']);
   }
 
+  showUsers() {
+
+  }
+
+  sendId()  {
+
+  }
+
+  blogpage() {}
+
   logout() {
     // Implement logout logic here and set userLoggedIn to false
     this.userLoggedIn = false;
-    this.router.navigate(['/home']);
+    this.router.navigate(['/']);
   }
 }

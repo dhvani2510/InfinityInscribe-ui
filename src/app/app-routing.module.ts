@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { FrontPageComponent } from './components/front-page/front-page.component';
 import { LoginComponent } from './components/login/login.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
+import { MainPageComponent } from './components/main-page/main-page.component';
 // import { LoginComponent } from './login/login.component';
 // import { SignUpComponent } from './sign-up/sign-up.component';
 // import { MyprofileComponent } from './myprofile/myprofile.component';
@@ -16,11 +17,11 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
 
 
 const routes: Routes = [
-  {path : 'home' , component : FrontPageComponent},
+  {path : '' , component : FrontPageComponent},
  {path : 'login' , component : LoginComponent},
  {path : 'signup' , component : SignUpComponent},
 //  {path : 'profile/:id' , component : MyprofileComponent},
-//  {path : 'blog' , component : MainPageComponent},
+ {path : 'home' , component : MainPageComponent},
 //  {path : 'createBlog' , component : NewblogComponent},
 //  {path : 'userList' , component : UserListComponent},
 //  {path : 'myblogs/:id' , component : MyBlogsComponent},
@@ -29,7 +30,7 @@ const routes: Routes = [
 //  {path : 'profile/followers/:id' , component :FollowerListComponent},
 
 
- {path:'',redirectTo: "home" , pathMatch: 'full'}
+ {path:'',redirectTo: "" , pathMatch: 'full'}
 ];
 
 @NgModule({

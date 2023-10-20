@@ -9,10 +9,25 @@ import { BehaviorSubject } from 'rxjs';
 export class AuthenticationService {
   private apiUrl = 'http://localhost:8080/api/v1/auth';
 
+  private userLoggedInSubject = new BehaviorSubject<boolean>(false);
+  userLoggedIn$ = this.userLoggedInSubject.asObservable();
+
+  setUserLoggedIn(value: boolean) {
+    console.log("set logged in to true "+ value);
+    this.userLoggedInSubject.next(value);
+  }
+
+  getUserLoggedIn() {
+    console.log(this.userLoggedInSubject.value);
+    
+    return this.userLoggedInSubject.value;
+  }
+
   constructor(private http: HttpClient) {
-    const storedToken = sessionStorage.getItem('token');
+    const storedToken = localStorage.getItem('token');
     if (storedToken) {
       this.tokenSubject.next(storedToken);
+      this.userLoggedInSubject.next(!!storedToken);
     }
   }
   
@@ -21,7 +36,9 @@ export class AuthenticationService {
     const url = `${this.apiUrl}/login`;
     return this.http.post(url, { email, password }).pipe(
           map ((data:any) => {
-              sessionStorage.setItem('token',data.data.token);
+              localStorage.setItem('token',data.data.token);
+              // set the token to be used in headers for all requests
+              this.tokenSubject.next(localStorage.getItem('token'));              
           }
       ));
   }
@@ -30,21 +47,22 @@ export class AuthenticationService {
 
   logoutService()
   {
-    sessionStorage.removeItem('token');
+    localStorage.removeItem('token');
+    this.setUserLoggedIn(false);
   }
 
   setToken(token: string | null): void {    
     this.tokenSubject.next(token);
 
     if (token) {
-      sessionStorage.setItem('token', token);
+      localStorage.setItem('token', token);
     } else {
-      sessionStorage.removeItem('token');
+      localStorage.removeItem('token');
     }
   }
 
   addHeaders(){
-    const token=sessionStorage.getItem("token");
+    const token=localStorage.getItem("token");
     const headers=new HttpHeaders({ Authorization: " Bearer " + token });
 
     return headers;

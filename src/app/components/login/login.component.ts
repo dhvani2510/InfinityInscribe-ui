@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
   ) {}
 
   goBack()  {
-    this.router.navigate(["/home"]);
+    this.router.navigate(["/"]);
   }
 
   closeAlert(): void {
@@ -42,11 +42,10 @@ export class LoginComponent implements OnInit {
     if (this.validateUser) {
       this.authService.authenticate(this.email, this.password).subscribe(
         data => {
-          console.log(data);
-          
+          this.authService.setUserLoggedIn(true);          
           this.service.isLoggedIn(true);
           console.log("login succesfull");
-          this.router.navigate(["/blog"]);
+          this.router.navigate(["/home"]);
         },
         error => {
           this.validateUser = false;

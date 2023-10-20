@@ -1,0 +1,110 @@
+<div class="main-content">
+  <div class="container-custom bg-light shadow-lg d-flex justify-content-end pt-3 dess pr-5">
+    <form>
+      <div class="input-group search">
+        <div class="input-group-prepend">
+          <span class="input-group-text">
+            <i class="material-icons">search</i>
+          </span>
+        </div>
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="search1"
+          [ngModelOptions]="{ standalone: true }"
+          placeholder="Search for category, title and more.."
+        />
+        <button type="button" class="btn btn-info rounded-0" (click)="searchinput()">
+          Search
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <div class="container-custom bg-light">
+    <div class="d-flex justify-content-center">
+      <div *ngFor="let i of categoriess; let ind = index">
+        <div *ngIf="ind < 10">
+          <div class="categories text-uppercase pl-3 pr-3 pt-3 pb-3" (click)="search(i)">{{ i }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row pt-5">
+      <div class="col-sm-9 border-right">
+        <div class="container-fluid">
+          <div class="head text-capitalize">Blogs from your followers</div>
+
+          <div *ngIf="followerBlogs.length == 0" class="text-center pt-5 pb-5 text-muted">
+            You have no blogs from your followers
+          </div>
+
+          <div *ngFor="let i of followerBlogs; let ind = index" class="container p-4 mt-5 mb-4 border-bottom">
+            <div *ngIf="ind < 10" class="container">
+              <div class="row">
+                <div class="col-sm-8">
+                  <div class="text-muted text-uppercase category">{{ i.category }}</div>
+                  <div class="font-weight-bold title text-capitalize">
+                    <a [routerLink]="'/completeBlog/' + i.blogId" class="title">{{ i.title }}</a>
+                  </div>
+                  <div class="descrip pt-2">{{ i.blogDescription }}</div>
+                  <div class="text-muted text-capitalize mt-3">{{ i.date | date: "mediumDate" }}</div>
+                  <div class="mt-2">
+                    <a [routerLink]="'/profile/' + i.users.id"><i> - {{ i.users.username }}</i></a>
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <img class="sizeimg shadow" [src]="i.image" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="container-fluid">
+          <div class="head text-capitalize">Check out other Blogs</div>
+
+          <div *ngFor="let i of blog; let ind = index" class="container p-4 mt-5 mb-4 border-bottom">
+            <div *ngIf="ind < 10" class="container">
+              <div class="row">
+                <div class="col-sm-8">
+                  <div class="text-muted text-uppercase category">{{ i.category }}</div>
+                  <div class="font-weight-bold title text-capitalize">
+                    <a [routerLink]="'/completeBlog/' + i.blogId" class="title">{{ i.title }}</a>
+                  </div>
+                  <div class="descrip pt-2">{{ i.blogDescription }}</div>
+                  <div class="text-muted text-capitalize mt-3">{{ i.date | date: "medium" }}</div>
+                  <div class="mt-2">
+                    <a [routerLink]="'/profile/' + i.users.id"><i> - {{ i.users.username }}</i></a>
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <img class="sizeimg shadow" [src]="i.image" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="container-fluid">
+          <div class="head text-center">Most Liked Blogs</div>
+          <div *ngFor="let i of popularBlog; let ind = index" class="container p-4 mt-5 mb-4 border-bottom">
+            <div class="font-weight-bold index">{{ ind + 1 }}</div>
+            <div class="text-muted text-uppercase category">{{ i.category }}</div>
+            <div class="title text-capitalize">
+              <a [routerLink]="'/completeBlog/' + i.blogId" class="title1">{{ i.title }}</a>
+            </div>
+            <div>{{ i.likes }}</div>
+            <div class="text-muted text-capitalize mt-3">{{ i.date | date: "mediumDate" }}</div>
+            <div class="mt-2">
+              <a [routerLink]="'/profile/' + i.users.id"><i> - {{ i.users.username }}</i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

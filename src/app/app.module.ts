@@ -14,6 +14,7 @@ import { CommonModule } from '@angular/common';
 import { NavbarComponent } from './shared-components/navbar/navbar.component'
 import { LoginComponent } from './components/login/login.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
+import { MainPageComponent } from './components/main-page/main-page.component';
 // import { MainPageComponent } from './main-page/main-page.component';
 // import { MyprofileComponent } from './myprofile/myprofile.component';
 // import { NewblogComponent } from './newblog/newblog.component';
@@ -30,8 +31,8 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
     LoginComponent,
     FrontPageComponent,
     FooterComponent,
-    NavbarComponent
-    // MainPageComponent,
+    NavbarComponent,
+    MainPageComponent,
     // MyprofileComponent,
     // NewblogComponent,
     // MyBlogsComponent,

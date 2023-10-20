@@ -9,13 +9,13 @@ export class AppService {
   isLoggedIn(bool:boolean)
   {
    
-    sessionStorage.setItem('auth',String(bool));
+    localStorage.setItem('auth',String(bool));
     return bool;
 
   }
   checkLogin()
   {
-    const auth = sessionStorage.getItem('token');
+    const auth = localStorage.getItem('token');
     if(auth)
     {
       return true;

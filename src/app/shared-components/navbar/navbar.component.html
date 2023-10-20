@@ -1,23 +1,45 @@
 <div class="navbar">
   <div class="logo">
-        <span>InfinityScrible</span>
+    <span>InfinityScrible</span>
   </div>
   <div class="buttons">
     <ng-container *ngIf="!userLoggedIn; else userLinks">
-      <button (click)="navigateToLogin()">
+      <button (click)="navigateToLogin()" class="custom-button">
         <i class="fas fa-sign-in-alt"></i> Login
       </button>
-      <button (click)="navigateToSignup()">
+      <button (click)="navigateToSignup()" class="custom-button">
         <i class="fas fa-user-plus"></i> Signup
       </button>
     </ng-container>
     <ng-template #userLinks>
-      <button (click)="navigateToProfile()">
-        <i class="fas fa-user"></i> Profile
-      </button>
-      <button (click)="logout()">
-        <i class="fas fa-sign-out-alt"></i> Logout
-      </button>
+          <button
+            type="button"
+            class="custom-button"
+            (click)="showUsers()"
+          >
+            Show Users
+          </button>
+          <button
+            type="button"
+            class="custom-button"
+            (click)="sendId()"
+          >
+            View Profile
+          </button>
+          <button
+            type="button"
+            class="custom-button"
+            (click)="blogpage()"
+          >
+            + Add Blog
+          </button>
+          <button
+            type="button"
+            class="custom-button"
+            (click)="logout()"
+          >
+            Logout
+          </button>
     </ng-template>
   </div>
 </div>
