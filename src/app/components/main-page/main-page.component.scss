@@ -1,28 +1,39 @@
-// Define a base font family
 $base-font-family: inherit;
 
-.main-content  {
+.main-content {
   position: relative;
   top: 30px;
-  max-height: 100vh;
   min-height: 70vh;
+  font-family: $base-font-family;
+}
+
+.custom-container {
+  padding: 1%;
+}
+
+.heading, .category, .title, .title1, .descrip, .descrip1, .head, .index {
+  font-family: $base-font-family;
 }
 
 .heading {
   font-size: 28px;
-  font-family: $base-font-family;
 }
 
-.category {
+.category, .categories {
   font-size: 16px;
-  font-family: $base-font-family;
+  cursor: pointer;
+  color: #45969b;
+  &:hover {
+    color: black;
+  }
 }
 
-.title {
+.title, .title1 {
   font-size: 25px;
-  font-family: $base-font-family;
   color: black;
   text-decoration: none;
+  display: inline-block;
+  position: relative;
 
   &:hover {
     color: #45969b;
@@ -31,23 +42,10 @@ $base-font-family: inherit;
 
 .descrip {
   font-size: 18px;
-  font-family: $base-font-family;
-}
-
-.title1 {
-  font-size: 20px;
-  font-family: $base-font-family;
-  color: black;
-  text-decoration: none;
-
-  &:hover {
-    color: #45969b;
-  }
 }
 
 .descrip1 {
   font-size: 15px;
-  font-family: $base-font-family;
 }
 
 .sizeimg {
@@ -55,21 +53,26 @@ $base-font-family: inherit;
   width: 200px;
 }
 
-.categories {
-  cursor: pointer;
-  font-size: 18px;
-  color: #45969b;
+.comment-icon::before {
+  content: "\f075"; // Font Awesome Comment icon
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  margin-right: 4px;
+}
 
-  &:hover {
-    color: black;
+.share-icon::before {
+  content: "\f064"; // Font Awesome Share icon
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  margin-right: 4px;
+}
+
+.likes, .comments, .shares {
+  font-size: 14px;
+  margin-top: 8px;
+
+  .comment-icon::before,
+  .share-icon::before {
+    font-size: 16px;
   }
-}
-
-.head {
-  font-family: $base-font-family;
-  font-size: 28px;
-}
-
-.index {
-  font-size: 15px;
 }

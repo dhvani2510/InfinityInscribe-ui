@@ -4,6 +4,11 @@ import { FrontPageComponent } from './components/front-page/front-page.component
 import { LoginComponent } from './components/login/login.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { MainPageComponent } from './components/main-page/main-page.component';
+import { AuthGuard } from './auth.guard';
+import { UserListComponent } from './components/user-list/user-list.component';
+import { NewblogComponent } from './components/newblog/newblog.component';
+import { MyprofileComponent } from './shared-components/myprofile/myprofile.component';
+import { MyBlogsComponent } from './components/my-blogs/my-blogs.component';
 // import { LoginComponent } from './login/login.component';
 // import { SignUpComponent } from './sign-up/sign-up.component';
 // import { MyprofileComponent } from './myprofile/myprofile.component';
@@ -20,11 +25,11 @@ const routes: Routes = [
   {path : '' , component : FrontPageComponent},
  {path : 'login' , component : LoginComponent},
  {path : 'signup' , component : SignUpComponent},
-//  {path : 'profile/:id' , component : MyprofileComponent},
- {path : 'home' , component : MainPageComponent},
-//  {path : 'createBlog' , component : NewblogComponent},
-//  {path : 'userList' , component : UserListComponent},
-//  {path : 'myblogs/:id' , component : MyBlogsComponent},
+ {path : 'profile/:id' , component : MyprofileComponent},
+ {path : 'home' , component : MainPageComponent, canActivate:[AuthGuard]},
+ {path : 'createBlog' , component : NewblogComponent},
+ {path : 'userList' , component : UserListComponent},
+ {path : 'myblogs/:id' , component : MyBlogsComponent},
 //  {path : 'editblog/:id' , component : EditBlogComponent},
 //  {path : 'completeBlog/:id' , component : CompleteBlogComponent},
 //  {path : 'profile/followers/:id' , component :FollowerListComponent},

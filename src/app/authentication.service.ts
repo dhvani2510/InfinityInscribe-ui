@@ -3,6 +3,17 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {map} from 'rxjs/operators';
 import { BehaviorSubject } from 'rxjs';
 
+;;
+class User {
+  id = '';
+  firstName='';
+  lastName='';
+  email='';
+  password='';
+  username='';
+  bio='';
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -11,25 +22,45 @@ export class AuthenticationService {
 
   private userLoggedInSubject = new BehaviorSubject<boolean>(false);
   userLoggedIn$ = this.userLoggedInSubject.asObservable();
+  private userSubject = new BehaviorSubject<User>(new User());
+  user$ = this.userSubject.asObservable();
+
+  getUser() {
+    const storedUser = localStorage.getItem('user');
+    if (storedUser) {
+      this.userSubject.next(JSON.parse(storedUser));
+    }
+    return this.userSubject.getValue();
+  }
+
+  setUser(user: User) {
+    localStorage.setItem('user', JSON.stringify(user));
+    this.userSubject.next(user);
+  }
+  
 
   setUserLoggedIn(value: boolean) {
     console.log("set logged in to true "+ value);
     this.userLoggedInSubject.next(value);
   }
 
-  getUserLoggedIn() {
-    console.log(this.userLoggedInSubject.value);
-    
+  getUserLoggedIn() {    
     return this.userLoggedInSubject.value;
   }
 
   constructor(private http: HttpClient) {
-    const storedToken = localStorage.getItem('token');
-    if (storedToken) {
-      this.tokenSubject.next(storedToken);
-      this.userLoggedInSubject.next(!!storedToken);
-    }
+  const storedToken = localStorage.getItem('token');
+  const storedUser = localStorage.getItem('user');
+
+  if (storedToken) {
+    this.tokenSubject.next(storedToken);
+    this.userLoggedInSubject.next(!!storedToken);
   }
+
+  if (storedUser) {
+    this.userSubject.next(JSON.parse(storedUser));
+  }
+}
   
   authenticate(email: string,password:string)
   {
@@ -45,11 +76,11 @@ export class AuthenticationService {
 
   private tokenSubject: BehaviorSubject<string | null> = new BehaviorSubject<string | null>(null);
 
-  logoutService()
-  {
+  logoutService() {
     localStorage.removeItem('token');
+    localStorage.removeItem('user');
     this.setUserLoggedIn(false);
-  }
+  }  
 
   setToken(token: string | null): void {    
     this.tokenSubject.next(token);
@@ -64,7 +95,6 @@ export class AuthenticationService {
   addHeaders(){
     const token=localStorage.getItem("token");
     const headers=new HttpHeaders({ Authorization: " Bearer " + token });
-
     return headers;
   }
 

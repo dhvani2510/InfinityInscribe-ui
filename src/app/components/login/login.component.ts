@@ -3,6 +3,7 @@ import { Router } from "@angular/router";
 import { HttpClient } from "@angular/common/http";
 import { AppService } from "src/app/app.service";
 import { AuthenticationService } from "src/app/authentication.service";
+import { UserService } from "src/app/user.service";
 @Component({
   selector: "app-login",
   templateUrl: "./login.component.html",
@@ -16,7 +17,8 @@ export class LoginComponent implements OnInit {
     private httpClient: HttpClient,
     private service: AppService,
     private router: Router,
-    private authService: AuthenticationService
+    private authService: AuthenticationService,
+    private userService: UserService
   ) {}
 
   goBack()  {
@@ -45,6 +47,7 @@ export class LoginComponent implements OnInit {
           this.authService.setUserLoggedIn(true);          
           this.service.isLoggedIn(true);
           console.log("login succesfull");
+          this.getUser();
           this.router.navigate(["/home"]);
         },
         error => {
@@ -54,6 +57,23 @@ export class LoginComponent implements OnInit {
       );
     }
   }
+
+  getUser() {
+    this.userService.getUser().subscribe(
+      (res: any) => {
+        if (res.status == 200) {
+          console.log(res.data);
+          this.authService.setUser(res.data);
+        } else {
+          console.log(res.message);
+        }
+      },
+      (error: any) => {
+        console.log(error);
+      }
+    );
+  }
+
   showPassword = "password";
   showPasswordFunction() {
     if (this.showPassword == "password") {

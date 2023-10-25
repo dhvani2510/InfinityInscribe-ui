@@ -15,6 +15,10 @@ import { NavbarComponent } from './shared-components/navbar/navbar.component'
 import { LoginComponent } from './components/login/login.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { MainPageComponent } from './components/main-page/main-page.component';
+import { NewblogComponent } from './components/newblog/newblog.component';
+import { UserListComponent } from './components/user-list/user-list.component';
+import { MyprofileComponent } from './shared-components/myprofile/myprofile.component';
+import { MyBlogsComponent } from './components/my-blogs/my-blogs.component';
 // import { MainPageComponent } from './main-page/main-page.component';
 // import { MyprofileComponent } from './myprofile/myprofile.component';
 // import { NewblogComponent } from './newblog/newblog.component';
@@ -33,13 +37,13 @@ import { MainPageComponent } from './components/main-page/main-page.component';
     FooterComponent,
     NavbarComponent,
     MainPageComponent,
-    // MyprofileComponent,
-    // NewblogComponent,
-    // MyBlogsComponent,
+    MyprofileComponent,
+    NewblogComponent,
+    MyBlogsComponent,
     // EditBlogComponent,
     // CompleteBlogComponent,
     // FollowerListComponent,
-    // UserListComponent
+    UserListComponent
   ],
   imports: [
     BrowserModule,
