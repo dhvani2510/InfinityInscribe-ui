@@ -9,6 +9,8 @@ import { UserListComponent } from './components/user-list/user-list.component';
 import { NewblogComponent } from './components/newblog/newblog.component';
 import { MyprofileComponent } from './shared-components/myprofile/myprofile.component';
 import { MyBlogsComponent } from './components/my-blogs/my-blogs.component';
+import { CompleteBlogComponent } from './shared-components/complete-blog/complete-blog.component';
+import { EditBlogComponent } from './shared-components/edit-blog/edit-blog.component';
 // import { LoginComponent } from './login/login.component';
 // import { SignUpComponent } from './sign-up/sign-up.component';
 // import { MyprofileComponent } from './myprofile/myprofile.component';
@@ -30,8 +32,8 @@ const routes: Routes = [
  {path : 'createBlog' , component : NewblogComponent},
  {path : 'userList' , component : UserListComponent},
  {path : 'myblogs/:id' , component : MyBlogsComponent},
-//  {path : 'editblog/:id' , component : EditBlogComponent},
-//  {path : 'completeBlog/:id' , component : CompleteBlogComponent},
+ {path : 'editblog/:id' , component : EditBlogComponent},
+ {path : 'completeBlog/:id' , component : CompleteBlogComponent},
 //  {path : 'profile/followers/:id' , component :FollowerListComponent},
 
 

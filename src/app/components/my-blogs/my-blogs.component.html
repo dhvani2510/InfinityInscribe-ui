@@ -60,8 +60,7 @@
                   <a
                     type="button"
                     class="btn btn-dark rounded-0 width borders"
-                    href="/completeBlog/{{i.blogId}}"
-                    *ngIf="superAccess"
+                    href="/completeBlog/{{i.id}}"
                   >
                     Show Complete Blog
                 </a>
@@ -72,8 +71,7 @@
                     <a
                       type="button"
                       class="btn btn-dark rounded-0 width borders"
-                      href="/editblog/{{i.blogId}}"
-                      *ngIf="superAccess"
+                      href="/editblog/{{i.id}}"
                         >
                       Update Blog
                   </a>
@@ -84,8 +82,7 @@
                   <button
                     type="button"
                     class="btn btn-dark rounded-0 width borders"
-                    (click)="deleteBlog(i.blogId)"
-                    *ngIf="superAccess"
+                    (click)="deleteBlog(i.id)"
                   >
                     Delete Blog
                   </button>

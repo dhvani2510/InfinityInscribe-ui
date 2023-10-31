@@ -91,13 +91,13 @@ export class MainPageComponent implements OnInit {
   }
 
   commentBlog(blogs:any, id: any, comment:string)  {
-    const url = 'http://localhost:8080/api/blogs/';
+    const url = 'http://localhost:8080/api/comment/';
     const headers = this.authService.addHeaders();
     const request= {
       "comment": comment,
       "id": id
     };
-    this.httpClient.post(url+ `comment`,request, {headers:headers}).subscribe(
+    this.httpClient.post(url+ `add`,request, {headers:headers}).subscribe(
       (response:any) => {
         if(response.status == 200)  {
           console.log("commneted");

@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AppService } from 'src/app/app.service';
 import { AuthenticationService } from 'src/app/authentication.service';
+import { BlogService } from 'src/app/blog.service';
 
 @Component({
   selector: 'app-my-blogs',
@@ -15,7 +16,7 @@ export class MyBlogsComponent implements OnInit {
   submitted = false;
   id:string='';
 
-  blogUrl = 'http://localhost:8080/api/blogs/getBlog/';
+  blogUrl = 'http://localhost:8080/api/blogs/getNyBlog/';
   blogId:string='';
   date:any;
   category:string='';
@@ -30,7 +31,8 @@ export class MyBlogsComponent implements OnInit {
     private httpClient: HttpClient,
     private service: AppService,
     private authService: AuthenticationService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private blogService: BlogService
   ) {
     this.registerForm = this.formBuilder.group({
       content: ['', Validators.required],
@@ -62,30 +64,6 @@ export class MyBlogsComponent implements OnInit {
   get f() {
     return this.registerForm.controls;
   }
-
-  blogpage() {
-    this.router.navigate(['/createBlog']);
-  }
-
-  logoutUrl = 'http://localhost:10083/login/logout';
-  logout() {
-    if (confirm('you want to logout??')) {
-      if (this.service.checkLogin()) {
-        this.authService.logoutService();
-        this.httpClient.get(this.logoutUrl).subscribe((res) => {
-          alert('Logout successful');
-        });
-
-        this.router.navigate(['/home']);
-      }
-    } else {
-      alert('ohk');
-    }
-  }
-  checkLogin() {
-    return this.service.checkLogin();
-  }
-
   async ajaxCall() {
     const headers = this.authService.addHeaders();
 
@@ -100,19 +78,10 @@ export class MyBlogsComponent implements OnInit {
       });
     });
   }
-  getTitleAndDescription(title:string, desc:string) {
-    this.title = title;
-    this.content = desc;
-  }
 
-  deleteBlogUrl = 'http://localhost:10083/blog/deleteBlog';
   deleteBlog(id:string) {
-    let headers = this.authService.addHeaders();
-
-    let url = this.deleteBlogUrl + '/' + id;
-
     if (confirm('Are you sure you want to delete the blog?')) {
-      this.httpClient.get(url, { headers }).subscribe((res) => {
+      this.blogService.deleteBlog(id).subscribe((res:any) => {
         console.log(res);
         this.ajaxCall();
         alert('blog deleted');
@@ -120,10 +89,6 @@ export class MyBlogsComponent implements OnInit {
     } else {
       alert('ohk');
     }
-  }
-
-  editblog() {
-    this.router.navigate(['/editblog']);
   }
   addBlog() {
     this.router.navigate(['/createBlog']);

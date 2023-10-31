@@ -19,6 +19,8 @@ import { NewblogComponent } from './components/newblog/newblog.component';
 import { UserListComponent } from './components/user-list/user-list.component';
 import { MyprofileComponent } from './shared-components/myprofile/myprofile.component';
 import { MyBlogsComponent } from './components/my-blogs/my-blogs.component';
+import { CompleteBlogComponent } from './shared-components/complete-blog/complete-blog.component';
+import { EditBlogComponent } from './shared-components/edit-blog/edit-blog.component';
 // import { MainPageComponent } from './main-page/main-page.component';
 // import { MyprofileComponent } from './myprofile/myprofile.component';
 // import { NewblogComponent } from './newblog/newblog.component';
@@ -40,8 +42,8 @@ import { MyBlogsComponent } from './components/my-blogs/my-blogs.component';
     MyprofileComponent,
     NewblogComponent,
     MyBlogsComponent,
-    // EditBlogComponent,
-    // CompleteBlogComponent,
+    EditBlogComponent,
+    CompleteBlogComponent,
     // FollowerListComponent,
     UserListComponent
   ],
